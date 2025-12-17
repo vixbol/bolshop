@@ -1,0 +1,129 @@
+:root{
+  --bg1: #0f172a;
+  --bg2: #021024;
+  --accent: #ffd166;
+  --green: #0f9d58;
+}
+
+.christmas-wrap{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 70%);
+  color: white;
+  font-family: "Inter", sans-serif;
+}
+
+/* soft gradient overlay */
+.gradient-overlay{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(ellipse at 20% 10%, rgba(255,200,120,0.06) 0%, transparent 10%),
+              radial-gradient(ellipse at 80% 80%, rgba(0,200,255,0.03) 0%, transparent 20%);
+  pointer-events:none;
+}
+
+/* bokeh (soft circles) */
+.bokeh{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.bokeh span{
+  position:absolute;
+  width: 120px; height:120px;
+  background: rgba(255,255,255,0.03);
+  filter: blur(30px);
+  border-radius:50%;
+  animation: floaty 8s ease-in-out infinite;
+}
+.bokeh span:nth-child(1){ left:5%; top:10%; animation-delay:0s; transform:scale(.8)}
+.bokeh span:nth-child(2){ left:80%; top:5%; animation-delay:1s; transform:scale(1.1)}
+.bokeh span:nth-child(3){ left:20%; top:60%; animation-delay:2s; transform:scale(.7)}
+.bokeh span:nth-child(4){ left:60%; top:50%; animation-delay:3s; transform:scale(1)}
+.bokeh span:nth-child(5){ left:40%; top:20%; animation-delay:4s; transform:scale(.9)}
+.bokeh span:nth-child(6){ left:90%; top:70%; animation-delay:5s; transform:scale(.6)}
+.bokeh span:nth-child(7){ left:10%; top:80%; animation-delay:6s; transform:scale(1.2)}
+.bokeh span:nth-child(8){ left:50%; top:85%; animation-delay:7s; transform:scale(.5)}
+@keyframes floaty { 0%{ transform: translateY(0) } 50%{ transform: translateY(-18px) } 100%{ transform: translateY(0) } }
+
+/* dây đèn */
+.light-string{
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  pointer-events:none;
+  transform: rotate(-6deg);
+}
+.bulb{
+  width:14px; height:20px;
+  border-radius:50%;
+  background: linear-gradient(180deg,#fff,#f7b500);
+  box-shadow: 0 0 18px rgba(255,200,50,0.7), inset 0 -3px 6px rgba(0,0,0,0.2);
+  animation: blink 2.4s infinite;
+  transform-origin:center;
+}
+.bulb:nth-child(odd){ background: linear-gradient(180deg,#ff7aa2,#b8003a); box-shadow: 0 0 18px rgba(255,90,120,0.6);}
+.bulb:nth-child(3n){ background: linear-gradient(180deg,#8bf1a8,#0a7f3a); box-shadow: 0 0 16px rgba(30,200,120,0.5);}
+@keyframes blink{
+  0% { transform: translateY(0) scale(1); opacity:.85 }
+  50% { transform: translateY(-3px) scale(1.05); opacity:1 }
+  100% { transform: translateY(0) scale(1); opacity:.85 }
+}
+
+/* cây thông phong cách */
+.tree{
+  position:absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 160px;
+  pointer-events:none;
+  transform: translateZ(0);
+}
+.tree-top, .tree-mid, .tree-base{
+  margin: 0 auto;
+  background: linear-gradient(180deg, #0b6623, #04461a);
+  width: 0;
+  border-left: 80px solid transparent;
+  border-right: 80px solid transparent;
+  border-bottom: 80px solid #0b6623;
+  filter: drop-shadow(0 6px 8px rgba(0,0,0,0.4));
+}
+.tree-mid{
+  margin-top:-32px;
+  border-left: 64px solid transparent;
+  border-right: 64px solid transparent;
+  border-bottom: 64px solid #0b7a2b;
+}
+.tree-base{
+  margin-top:-24px;
+  border-left: 48px solid transparent;
+  border-right: 48px solid transparent;
+  border-bottom: 48px solid #0b8f33;
+}
+.tree-trunk{
+  width:34px;
+  height:34px;
+  background: #7a4128;
+  margin: 6px auto 0;
+  border-radius:4px;
+}
+
+/* content chính */
+.content{
+  position: relative;
+  z-index: 10;
+  padding: 40px;
+  text-align:center;
+}
+
+/* responsive */
+@media (max-width:600px){
+  .tree{ right: 10px; width: 120px; }
+  .content{ margin: 60px 16px; padding: 20px;}
+}
